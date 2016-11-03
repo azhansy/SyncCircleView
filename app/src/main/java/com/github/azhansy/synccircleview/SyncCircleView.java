@@ -196,6 +196,7 @@ public class SyncCircleView extends View {
 
         backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         backgroundPaint.setStyle(Paint.Style.FILL);
+        backgroundPaint.setAntiAlias(true);
         backgroundPaint.setColor(Color.parseColor("#ffffff"));
     }
 
@@ -286,7 +287,7 @@ public class SyncCircleView extends View {
             canvas.save();
             Shader mShader = new SweepGradient(width / 2, height / 2, colors, null);
             Matrix matrix = new Matrix();
-            matrix.setRotate(270, height / 2, height / 2);
+            matrix.setRotate(270, height / 2, height / 2); //这里旋转后，需要保存之前的状态
             mShader.setLocalMatrix(matrix);
             circleProgressPaint.setShader(mShader);
             // 线条进度
